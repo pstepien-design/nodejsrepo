@@ -1,11 +1,20 @@
+/* const app =require('express')(); */
+
 const express = require('express');
 const app = express();
-app.get('/', function (req, res) {
-  res.send('this is a get request)');
+
+ app.use(express.json());
+
+
+app.get('/', (req, res) => {
+  res.send({ message: "This is a get request" });
 });
-app.post('/', function (req, res) {
-  console.log('post request sent');
-  res.send('This is a post request');
+app.get('/welcome', (req, res) => {
+  res.send({ message: "Welcome visitor" });
+});
+app.post('/mirror', (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
 });
 
 app.listen(3005, () => {
