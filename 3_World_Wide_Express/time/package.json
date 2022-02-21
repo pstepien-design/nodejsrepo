@@ -8,8 +8,5 @@
   },
   "scripts": {
     "start": "sudo node app.js"
-  },
-  "devDependencies": {
-    "cors": "^2.8.5"
   }
 }
