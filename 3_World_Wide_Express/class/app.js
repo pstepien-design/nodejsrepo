@@ -3,7 +3,7 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send(`<h1>Welcome to my website</h1>
-  <h2>take a look ${true}</h2>`);
+  <h2>take a look true}</h2>`);
 })
 
 app.get('/forecast', (req, res) => {
