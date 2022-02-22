@@ -1,0 +1,1 @@
+console.log('javascript for the frontpage');
