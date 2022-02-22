@@ -17,8 +17,8 @@ const footer = fs
   .readFileSync('./public/components/footer/footer.html')
   .toString();
 
-const frontpagePage = nav + frontpage + footer;
-const themeparkPage = nav + themepark + footer;
+const frontpagePage = nav.replace('%%TITLE_PLACEHOLDER%%', 'welcome to the main page') + frontpage + footer;
+const themeparkPage = nav.replace('%%TITLE_PLACEHOLDER%%', 'have fun!') + themepark + footer;
 
 
 app.get('/', (req, res) => {
