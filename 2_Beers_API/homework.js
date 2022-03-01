@@ -2,15 +2,15 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-let beerId = 4;
-const Beers = [
+let CURRENT_ID = 3;
+const beers = [
   { id: 1, name: 'Tuborg', price: 10 },
   { id: 2, name: 'Carslberg', price: 20 },
   { id: 3, name: 'Svaneke', price: 30 },
 ];
 
 app.get('/beers', (req, res) => {
-  res.send({ Beer: Beers });
+  res.send({ Beer: beers });
 });
 
 /* app.get('/beers/:id', (req, res) => {
@@ -25,22 +25,25 @@ app.get('/beers', (req, res) => {
 }); */
 app.get('/beers/:id', (req, res) => {
   const id = Number(req.params.id);
-  const foundBeer = Beers.find((beer) => beer.id === id);
+  const foundBeer = beers.find((beer) => beer.id === id);
   foundBeer ? res.send(foundBeer) : res.status(204).send({});
 });
 
 app.post('/beers', (req, res) => {
-  Beers.push({ id: beerId, name: req.body.name, price: req.body.price });
-  beerId++;
+  /*   beers.push({ id: ++CURRENT_ID, name: req.body.name, price: req.body.price });
+  res.send('Beer ' + req.body.name + ' was successfully added'); */
+  const beerToCreate = req.body;
+  beerToCreate.id = ++CURRENT_ID;
+  beers.push(beerToCreate);
   res.send('Beer ' + req.body.name + ' was successfully added');
 });
 
 app.delete('/beers/:id', (req, res) => {
   /*  let isFound = false;
-  for (let beer of Beers) {
+  for (let beer of beers) {
     if (beer.id == req.params.id) {
-      const index = Beers.indexOf(beer);
-      Beers.splice(index, 1);
+      const index = beers.indexOf(beer);
+      beers.splice(index, 1);
       isFound = true;
       res.send('Beer ' + beer.name + ' was deleted');
     }
@@ -49,9 +52,9 @@ app.delete('/beers/:id', (req, res) => {
     res.send('Beer not found');
   } */
   const id = Number(req.params.id);
-  const foundBeerIndex = Beers.find((beer) => beer.id === id);
+  const foundBeerIndex = beers.find((beer) => beer.id === id);
   if (foundBeerIndex !== -1) {
-    Beers.splice(foundBeerIndex, 1);
+    beers.splice(foundBeerIndex, 1);
     res.send({});
   } else {
     res.status(404).send({});
@@ -60,10 +63,10 @@ app.delete('/beers/:id', (req, res) => {
 
 app.put('/beers/:id', (req, res) => {
   let isFound = false;
-  for (let beer of Beers) {
+  for (let beer of beers) {
     if (beer.id == req.params.id) {
-      const index = Beers.indexOf(beer);
-      Beers.splice(index, 1, {
+      const index = beers.indexOf(beer);
+      beers.splice(index, 1, {
         id: beer.id,
         name: req.body.name,
         price: req.body.price,
@@ -77,24 +80,24 @@ app.put('/beers/:id', (req, res) => {
   }
 });
 app.patch('/beers/:id', (req, res) => {
-  let isFound = false;
-  for (let beer of Beers) {
+  /* let isFound = false;
+  for (let beer of beers) {
     if (beer.id == req.params.id) {
-      const index = Beers.indexOf(beer);
+      const index = beers.indexOf(beer);
       if (req.body.name != beer.name) {
-        Beers.splice(index, 1, {
+        beers.splice(index, 1, {
           id: beer.id,
           name: req.body.name,
           price: beer.price,
         });
       } else if (req.body.price != beer.price) {
-        Beers.splice(index, 1, {
+        beers.splice(index, 1, {
           id: beer.id,
           name: beer.name,
           price: req.body.price,
         });
       } else if (req.body.price != beer.price && req.body.name != beer.name) {
-        Beers.splice(index, 1, {
+        beers.splice(index, 1, {
           id: beer.id,
           name: req.body.name,
           price: req.body.price,
@@ -106,6 +109,18 @@ app.patch('/beers/:id', (req, res) => {
   }
   if (!isFound) {
     res.send('Beer not found');
+  } */
+  const foundBeerIndex = beers.findIndex(
+    (beer) => beer.id === Number(req.params.id)
+  );
+  if (foundBeerIndex !== -1) {
+    const foundBeer = beers[foundBeerIndex];
+    const beerToUpdateWith = req.body;
+    const updatedBeer = { ...foundBeer, ...beerToUpdateWith, id: foundBeer.id };
+    beers[foundBeerIndex] = updatedBeer;
+    req.send({ data: updatedBeer });
+  } else {
+    res.status(404).send({});
   }
 });
 
