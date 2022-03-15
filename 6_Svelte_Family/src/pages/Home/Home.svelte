@@ -1,6 +1,9 @@
 <script>
   import Parent from '../../components/parent/Parent.svelte';
   import Child from '../../components/child/Child.svelte';
+
+  import { supermarket } from '../../store/supermarket';
+  console.log($supermarket);
   const parents = [
     {
       key: 1,
@@ -21,6 +24,19 @@
   <Parent handleFamilyMeetingCall={onFamilyMeetinCalled} name={parent.name} />
 {/each}
 
-<Child handleFamilyMeetingCall={onFamilyMeetinCalled} isGirl={true} name="Dorota" />
-<Child handleFamilyMeetingCall={onFamilyMeetinCalled} stereotype="bright-kid" name="Paweł" />
-<Child handleFamilyMeetingCall={onFamilyMeetinCalled} stereotype="black-sheep" name="Maria" />
+<Child
+  handleFamilyMeetingCall={onFamilyMeetinCalled}
+  isGirl={true}
+  name="Dorota"
+/>
+<Child
+  handleFamilyMeetingCall={onFamilyMeetinCalled}
+  stereotype="bright-kid"
+  name="Paweł"
+/>
+<Child
+  handleFamilyMeetingCall={onFamilyMeetinCalled}
+  stereotype="black-sheep"
+  name="Maria"
+/>
+<p>{JSON.stringify($supermarket, null)}</p>
