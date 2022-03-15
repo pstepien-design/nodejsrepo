@@ -21,6 +21,6 @@
   <Parent handleFamilyMeetingCall={onFamilyMeetinCalled} name={parent.name} />
 {/each}
 
-<Child isGirl={true} name="Dorota" />
-<Child stereotype="bright-kid" name="Paweł" />
-<Child stereotype="black-sheep" name="Maria" />
+<Child handleFamilyMeetingCall={onFamilyMeetinCalled} isGirl={true} name="Dorota" />
+<Child handleFamilyMeetingCall={onFamilyMeetinCalled} stereotype="bright-kid" name="Paweł" />
+<Child handleFamilyMeetingCall={onFamilyMeetinCalled} stereotype="black-sheep" name="Maria" />
