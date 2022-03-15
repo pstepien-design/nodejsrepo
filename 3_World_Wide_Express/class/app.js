@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 
-console.log(require('./dinosaurs/dinosaurs.json'));
+const dinosaurrouter = require('./routers/dinosarrouter');
+app.use(dinosaurrouter.router);
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
@@ -9,7 +10,7 @@ app.get('/', (req, res) => {
   <h2>take a look true}</h2>`);
 });
 app.get('/welcome', (req, res) => {
-  res.sendFile(__dirname + '/public/welcome.html');
+  res.sendFile(__dirname + '/public/welcome/welcome.html');
 });
 
 app.get('/forecast', (req, res) => {

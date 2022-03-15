@@ -3,6 +3,7 @@
   import Tree from './pages/tree/Tree.svelte';
   import Sun from './components/Sun/Sun.svelte';
   import Profile from './pages/profile/Profile.svelte';
+  	import Nested from './Nested.svelte';
 </script>
 
 <main>

@@ -1,4 +1,5 @@
 {
-  "coolDinosaurs": ["T-rex", "Velociraptor", "Mosoarus"],
-  "shittyDinosaurs": ["Not T-rex"]
+  "coolDinosaurs": ["T. Rex", "Velociraptor", "Mosasaurus", "Stegosaurus"],
+  "shittyDinosaurs": ["Chicken"]
+
 }

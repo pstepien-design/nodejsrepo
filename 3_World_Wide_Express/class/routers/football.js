@@ -1,8 +1,9 @@
-const player = 'Messi';
-const foota
+const { coolDinosaurs, shittyDinosaurs } = require("./dinosaurs.json");
 
-const sausage = {
-  player
-};
+function calculateAmountOfCoolDinosaurs() {
+    return coolDinosaurs.length;
+}
 
-console.log(sausage)
+module.exports = {
+    calculateAmountOfCoolDinosaurs: calculateAmountOfCoolDinosaurs
+}
