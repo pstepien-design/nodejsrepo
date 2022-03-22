@@ -1,0 +1,16 @@
+{
+  "name": "8_middelware_security",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pstepien",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3",
+    "helmet": "^5.0.2"
+  }
+}
