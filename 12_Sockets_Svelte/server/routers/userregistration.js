@@ -12,7 +12,7 @@ router.get('/api/logout', (req, res) => {
 
 router.post('/api/registerUser', (req, res) => {
   req.session.username = req.body.username;
-  res.send({ data: `Welcome: ` });
+  res.redirect('/');
 });
 
 export default router;

@@ -5,7 +5,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "mysql": "^2.18.1",
     "path": "^0.12.7",
     "sqlite": "^4.0.25",
     "sqlite3": "^5.0.2"
